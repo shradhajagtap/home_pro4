@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %}
+    <title>Show Hotel Information</title>
+
+{% endblock %}
+
+{% block content %}
+     <h3 class="text-primary text-center mb-3">Hotel Customer Information</h3>
+            <table class="table table-dark table-haver w-70 m-auto mt-5">
+                    <thead>
+                        <tr>
+                            <th>Customer ID</th>
+                            <th>Customer First Name</th>
+                            <th>Customer Last Name</th>
+                            <th>Customer Address</th>
+                            <th>Customer Email</th>
+                            <th>Customer Phone Number</th>
+                            <th colspan="2" class="text-center"> Action </th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {% for hotel in info %}
+                            <tr>
+                                <td>{{ hotel.id }}</td>
+                                <td>{{ hotel.customer_first_name }}</td>
+                                <td>{{ hotel.customer_last_name }}</td>
+                                <td>{{ hotel.customer_address }}</td>
+                                <td>{{ hotel.customer_email }}</td>
+                                <td>{{ hotel.customer_phone_no }}</td>
+
+                                <td>
+                                    <a href="{% url 'update_urls' hotel.id %}">
+                                        <button class="btn btn-light col-12"><i class="bi bi-vector-pen"></i> &nbsp Update </button>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="{% url 'delete_urls' hotel.id %}">
+                                        <button class="btn btn-danger col-12"><i class="bi bi-trash"></i> &nbsp Delete </button>
+                                    </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+            </table>
+{% endblock %}}
